@@ -1,3 +1,5 @@
+//First app
+
 const app = Vue.createApp({
   data() {
     return {
@@ -10,28 +12,27 @@ const app = Vue.createApp({
       this.currentUserInput = event.target.value;
     },
     setText() {
-      this.message = this.currentUserInput;
+      // this.message = this.currentUserInput;
+      this.message = this.$refs.userText.value;
+      // console.dir(this.$refs.userText);
     },
   },
 });
 
 app.mount('#app');
 
+//Second app
+
 const app2 = Vue.createApp({
+  template: `<p>{{ favoriteMeal }}</p>`,
   data() {
     return {
-      favoriteMeal: 'Pizza'
-    }
-  }
+      favoriteMeal: 'Pizza',
+    };
+  },
 });
 
 app2.mount('#app2');
-
-
-
-
-
-
 
 // ...
 
@@ -42,7 +43,7 @@ const data = {
 
 const handler = {
   set(target, key, value) {
-    if(key === 'message') {
+    if (key === 'message') {
       target.longMessage = value + 'World!';
     }
     target.message = value;
